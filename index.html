@@ -1,25 +1,20 @@
-<!-- Telegram Mini App адаптация -->
-<script src="https://telegram.org/js/telegram-web-app.js"></script>
-<script>
-    if (window.Telegram && window.Telegram.WebApp) {
-        window.Telegram.WebApp.ready();
-        window.Telegram.WebApp.expand();
-    }
-</script>
-<!-- Telegram Game API -->
-<script src="https://telegram.org/js/games.js"></script>
-<script>
-    // Инициализация игры
-    if (window.TelegramGameProxy) {
-        TelegramGameProxy.init();
-        
-        // Когда игра готова
-        TelegramGameProxy.ready();
-        
-        // Можно отправлять счёт
-        // TelegramGameProxy.shareScore(100);
-    }
-</script>
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Fetlar · Лягушачья битва</title>
+    
+    <!-- Telegram Game API (для HTML5 Game) -->
+    <script src="https://telegram.org/js/games.js"></script>
+    
+    <!-- Telegram Mini App адаптация -->
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+        /* ... все ваши стили ... */
+    </style>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -1963,5 +1958,21 @@
         }
     })();
 </script>
+(function() {
+            // Для HTML5 Game
+            if (window.TelegramGameProxy) {
+                console.log('✅ Telegram Game API');
+                TelegramGameProxy.init();
+                TelegramGameProxy.ready();
+            }
+            
+            // Для Mini App
+            if (window.Telegram && window.Telegram.WebApp) {
+                console.log('✅ Telegram Mini App API');
+                window.Telegram.WebApp.ready();
+                window.Telegram.WebApp.expand();
+            }
+        })();
+    </script>
 </body>
 </html>
