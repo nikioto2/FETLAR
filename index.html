@@ -1,15 +1,16 @@
-<!-- Telegram Mini App адаптация -->
-<script src="https://telegram.org/js/telegram-web-app.js"></script>
-<script>
-    if (window.Telegram && window.Telegram.WebApp) {
-        window.Telegram.WebApp.ready();
-        window.Telegram.WebApp.expand();
-    }
-</script>
+<!DOCTYPE html>
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Fetlar · Лягушачья битва</title>
+    
+    <!-- Telegram Game API -->
+    <script src="https://telegram.org/js/games.js"></script>
+    
+    <!-- Telegram Mini App адаптация -->
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    
     <style>
     @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
     
@@ -1932,7 +1933,6 @@
             
             resetButton.addEventListener('click', () => resetGame());
             canvas.addEventListener('click', handleCanvasClick);
-            canvas.addEventListener('click', handleCanvasClick);
             canvas.addEventListener('touchstart', handleCanvasClick, { passive: false });
             canvas.addEventListener('touchmove', (e) => e.preventDefault(), { passive: false });
             canvas.addEventListener('touchend', (e) => e.preventDefault());
@@ -1949,5 +1949,18 @@
         }
     })();
 </script>
+    <!-- Инициализация Telegram API -->
+    <script>
+        (function() {
+            if (window.TelegramGameProxy) {
+                TelegramGameProxy.init();
+                TelegramGameProxy.ready();
+            }
+            if (window.Telegram && window.Telegram.WebApp) {
+                window.Telegram.WebApp.ready();
+                window.Telegram.WebApp.expand();
+            }
+        })();
+    </script>
 </body>
 </html>
