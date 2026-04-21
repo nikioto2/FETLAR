@@ -6,6 +6,20 @@
         window.Telegram.WebApp.expand();
     }
 </script>
+<!-- Telegram Game API -->
+<script src="https://telegram.org/js/games.js"></script>
+<script>
+    // Инициализация игры
+    if (window.TelegramGameProxy) {
+        TelegramGameProxy.init();
+        
+        // Когда игра готова
+        TelegramGameProxy.ready();
+        
+        // Можно отправлять счёт
+        // TelegramGameProxy.shareScore(100);
+    }
+</script>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
