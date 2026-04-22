@@ -20,16 +20,101 @@
         -webkit-tap-highlight-color: transparent; /* Убирает синюю подсветку при тапе */
     }
     body {
-        min-height: 100vh;
-        margin: 0;
-        padding: 10px;
-        background: linear-gradient(145deg, #4B0082 0%, #2d004d 100%);
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        font-family: 'Press Start 2P', 'Courier New', monospace;
-    }
+    min-height: 100vh;
+    margin: 0;
+    padding: 10px;
+    background: linear-gradient(145deg, #4B0082 0%, #2d004d 100%);
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Press Start 2P', 'Courier New', monospace;
+}
+
+/* Пиксельный терновник — извивающийся */
+body::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        /* Основная ветка — извивающаяся лоза */
+        repeating-linear-gradient(35deg, 
+            transparent 0px, 
+            transparent 25px,
+            #2a1a0a 25px,
+            #2a1a0a 29px,
+            transparent 29px,
+            transparent 40px,
+            #2a1a0a 40px,
+            #2a1a0a 44px,
+            transparent 44px,
+            transparent 65px,
+            #2a1a0a 65px,
+            #2a1a0a 69px,
+            transparent 69px,
+            transparent 90px
+        ),
+        /* Вторая ветка — перекрестная лоза */
+        repeating-linear-gradient(-55deg, 
+            transparent 0px, 
+            transparent 35px,
+            #2a1a0a 35px,
+            #2a1a0a 39px,
+            transparent 39px,
+            transparent 55px,
+            #2a1a0a 55px,
+            #2a1a0a 59px,
+            transparent 59px,
+            transparent 85px
+        ),
+        /* Шипы — острые выступы слева */
+        repeating-linear-gradient(20deg,
+            transparent 0px,
+            transparent 20px,
+            #1a0f05 20px,
+            #1a0f05 22px,
+            #3a2a1a 22px,
+            #3a2a1a 24px,
+            transparent 24px,
+            transparent 50px
+        ),
+        /* Шипы — острые выступы справа */
+        repeating-linear-gradient(-30deg,
+            transparent 0px,
+            transparent 30px,
+            #1a0f05 30px,
+            #1a0f05 32px,
+            #3a2a1a 32px,
+            #3a2a1a 34px,
+            transparent 34px,
+            transparent 60px
+        ),
+        /* Мелкие колючки для текстуры */
+        repeating-linear-gradient(70deg,
+            transparent 0px,
+            transparent 45px,
+            #1a0f05 45px,
+            #1a0f05 47px,
+            transparent 47px,
+            transparent 90px
+        );
+    background-size: 
+        120px 120px,
+        140px 140px,
+        100px 100px,
+        110px 110px,
+        130px 130px;
+    opacity: 0.35;
+    pointer-events: none;
+    image-rendering: pixelated;
+    image-rendering: crisp-edges;
+}
     .game-container {
+        position: relative;
+        z-index: 1;
         background: #3a2a1a;
         background-image: radial-gradient(circle at 30% 20%, #5a4a3a, #1a0f05);
         padding: 1rem;
@@ -339,7 +424,6 @@
 </div>
 
 <script>
-    // JavaScript код игры (без изменений)
     (function(){
         "use strict";
 
